@@ -1,0 +1,21 @@
+{
+  "name": "downsizer",
+  "version": "0.1.0",
+  "description": "a simple CLI utility for scaling down images",
+  "main": "src/index.js",
+  "keywords": [
+    "image",
+    "cli"
+  ],
+  "author": "kingdaro",
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.18.2"
+  },
+  "bin": {
+    "downsize": "./bin/cli.js"
+  },
+  "devDependencies": {
+    "typescript": "^2.8.1"
+  }
+}
