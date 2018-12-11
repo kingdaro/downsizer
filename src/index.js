@@ -12,7 +12,9 @@ const readdir = promisify(fs.readdir)
 
 async function downsizeFolders(inputFolders, sizeLimit) {
   const time = Date.now()
-  await Promise.all(inputFolders.map(folder => handleInputFolder(folder, sizeLimit)))
+  await Promise.all(
+    inputFolders.map((folder) => handleInputFolder(folder, sizeLimit)),
+  )
   console.log(`Finished in ${Date.now() - time}ms`)
 }
 
@@ -26,7 +28,7 @@ async function handleInputFolder(folder, sizeLimit) {
   const images = await readdir(folder)
 
   await Promise.all(
-    images.map(async imageFile => {
+    images.map(async (imageFile) => {
       const imagePath = resolve(folder, imageFile)
       const outputFolder = folder + "_resized"
       const outputPath = resolve(outputFolder, imageFile)
@@ -53,8 +55,12 @@ async function downsizeImage(imagePath, outputPath, sizeLimit) {
 
   console.log(`
     ${imagePath}
-    Dimensions: ${inputData.width}x${inputData.height} => ${output.width}x${output.height}
-    Size: ${(inputSize / 1000).toFixed(2)} KB => ${(output.size / 1000).toFixed(2)} KB
+    Dimensions: ${inputData.width}x${inputData.height} => ${output.width}x${
+    output.height
+  }
+    Size: ${(inputSize / 1000).toFixed(2)} KB => ${(output.size / 1000).toFixed(
+    2,
+  )} KB
   `)
 }
 
