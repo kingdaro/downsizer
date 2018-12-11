@@ -1,13 +1,11 @@
 // @ts-check
 const sharp = require("sharp")
 const fs = require("fs")
-const { resolve, parse: parsePath, join: joinPath } = require("path")
+const { resolve } = require("path")
 const { promisify } = require("util")
 
 const stat = promisify(fs.stat)
-const exists = promisify(fs.exists)
 const mkdir = promisify(fs.mkdir)
-const access = promisify(fs.access)
 const readdir = promisify(fs.readdir)
 
 async function downsizeFolders(inputFolders, sizeLimit) {
