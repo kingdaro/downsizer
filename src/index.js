@@ -48,9 +48,7 @@ async function downsizeImage(imagePath, outputPath, sizeLimit) {
   const inputSize = (await input.toBuffer()).length
 
   const output = await input
-    .resize(sizeLimit, sizeLimit)
-    .max()
-    .withoutEnlargement(true)
+    .resize(sizeLimit, sizeLimit, { fit: "inside", withoutEnlargement: true })
     .toFile(outputPath)
 
   console.log(`
