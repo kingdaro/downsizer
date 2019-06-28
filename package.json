@@ -10,12 +10,12 @@
   "author": "kingdaro",
   "license": "MIT",
   "dependencies": {
-    "sharp": "^0.21.1"
+    "sharp": "^0.22.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.2"
   },
   "bin": {
     "downsize": "./bin/cli.js"
-  },
-  "devDependencies": {
-    "typescript": "^3.2.2"
   }
 }
