@@ -16,7 +16,7 @@ function main() {
     process.exit(1)
   }
 
-  const sizeLimit = +args[1]
+  const sizeLimit = Number(args[1])
   if (Number.isNaN(sizeLimit) || sizeLimit === 0) {
     console.log(`Size limit must be a number, and it can't be 0`)
     printUsage()
