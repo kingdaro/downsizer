@@ -1,6 +1,6 @@
 {
   "name": "downsizer",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "a simple CLI utility for scaling down images",
   "main": "src/index.js",
   "keywords": [
