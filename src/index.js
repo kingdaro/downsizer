@@ -8,15 +8,23 @@ const stat = promisify(fs.stat)
 const mkdir = promisify(fs.mkdir)
 const readdir = promisify(fs.readdir)
 
+/**
+ * @param {string[]} inputFolders
+ * @param {number} sizeLimit
+ */
 async function downsizeFolders(inputFolders, sizeLimit) {
   const time = Date.now()
   await Promise.all(
-    inputFolders.map((folder) => handleInputFolder(folder, sizeLimit)),
+    inputFolders.map((folder) => downsizeImagesInFolder(folder, sizeLimit)),
   )
   console.log(`Finished in ${Date.now() - time}ms`)
 }
 
-async function handleInputFolder(folder, sizeLimit) {
+/**
+ * @param {string} folder
+ * @param {number} sizeLimit
+ */
+async function downsizeImagesInFolder(folder, sizeLimit) {
   const stats = await stat(folder)
   if (!stats.isDirectory()) {
     console.log(`${folder} must be a directory.`)
@@ -40,8 +48,13 @@ async function handleInputFolder(folder, sizeLimit) {
   )
 }
 
+/**
+ * @param {string} imagePath
+ * @param {string} outputPath
+ * @param {number} sizeLimit
+ */
 async function downsizeImage(imagePath, outputPath, sizeLimit) {
-  const input = await sharp(imagePath)
+  const input = sharp(imagePath)
   const inputData = await input.metadata()
   const inputSize = (await input.toBuffer()).length
 
