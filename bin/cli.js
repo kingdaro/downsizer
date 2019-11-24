@@ -13,14 +13,14 @@ function main() {
   if (!folder) {
     console.log(`No folder given`)
     printUsage()
-    return
+    process.exit(1)
   }
 
   const sizeLimit = +args[1]
   if (Number.isNaN(sizeLimit) || sizeLimit === 0) {
     console.log(`Size limit must be a number, and it can't be 0`)
     printUsage()
-    return
+    process.exit(1)
   }
 
   downsizeFolders([folder], sizeLimit)
