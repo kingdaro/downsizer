@@ -49,14 +49,13 @@ async function downsizeImage(imagePath, outputPath, sizeLimit) {
     .resize(sizeLimit, sizeLimit, { fit: "inside", withoutEnlargement: true })
     .toFile(outputPath)
 
+  const formattedInputSize = (inputSize / 1000).toFixed(2)
+  const formattedOutputSize = (output.size / 1000).toFixed(2)
+
   console.log(`
     ${imagePath}
-    Dimensions: ${inputData.width}x${inputData.height} => ${output.width}x${
-    output.height
-  }
-    Size: ${(inputSize / 1000).toFixed(2)} KB => ${(output.size / 1000).toFixed(
-    2,
-  )} KB
+    Dimensions: ${inputData.width}x${inputData.height} => ${output.width}x${output.height}
+    Size: ${formattedInputSize} KB => ${formattedOutputSize} KB
   `)
 }
 
